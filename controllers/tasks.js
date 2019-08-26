@@ -16,11 +16,15 @@ function newTask(req, res) {
 }
 
 function create(req, res) {
-    req.body.creatorId = req.user._id;
-    req.body.creatorName = req.user.name;
+   // req.body.creatorId = req.user._id;
+   //req.body.creatorName = req.user.name;
 
     //we need to make sure we have express.json() and express.urlencoded() installed in our middleware stack to get the information from req.body!!
     Task.create(req.body, function (err, task) {
+
+        task.creatorName = req.user.name;
+        task.creatorId = req.user._id;
+        task.save();
         res.redirect('/'); // this is an http request to the flights url
     })
 }

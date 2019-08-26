@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Task = require('../models/task');
+const Group = require('../models/group');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports = {
@@ -50,11 +51,25 @@ function completeTask(req, res) {
 
     Task.findById(req.params.id, function(err, task){
         task.completed = true;
+        task.completionTime = new Date();
+        task.completedBy = req.user.name;
         if (req.user.currentTasks) {
             req.user.currentTasks.remove(task.id);
             req.user.completedTasks.push(task.id);
+            
             req.user.points+=task.points;
             req.user.save();
+            
+
+
+
+
+
+
+
+
+
+
         };
         task.save(function (err) {
             

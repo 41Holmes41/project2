@@ -1,9 +1,17 @@
 <% include ./partials/header.ejs %>
 
-<p><%=user.name%></p>
-<p><%=user.points%></p>
-<p><%=user.email%></p>
-<p><%=user.createdAt%></p>
+
+<div class="col s6 m6">
+    <div class="card teal lighten-1">
+      <div class="card-content white-text">
+        <span class="card-title"><%=user.name%></span>
+
+        <h6>Email: <%=user.email%></h6>
+        <h6>Points: <%=user.points%></h6>
+        <h6>Number of Completed Tasks: <%=user.completedTasks.length%></h6>
+      </div>
+    </div>
+  </div>
 
 
 

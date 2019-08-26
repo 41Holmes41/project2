@@ -1,15 +1,15 @@
 <% include ../partials/header.ejs %>
 
 <% if (user) { %>
-    <h1>Add a New Task</h1>
+    <h1 class="teal-text text-lighten-1">Add a New Task</h1>
     <form action="/tasks/new" method="POST" autocomplete="off">
-        <h6>Name your task:</h6>
+        <h6 class="teal-text text-lighten-1">Name your task:</h6>
         <input type="text" name="title">
-        <h6>Describe your task:</h6>
+        <h6 class="teal-text text-lighten-1">Describe your task:</h6>
         <input type="text" name="description">
-        <h6>Desired completion date:</h6>
-        <input type="datetime-local" name="completion">
-        <input type="submit" value="Add Your Task">
+        <h6 class="teal-text text-lighten-1">Desired completion date:</h6>
+        <input class="teal-text text-lighten-1" type="datetime-local" name="completion">
+        <input class="white-text teal lighten-1"type="submit" value="Add Your Task">
     </form>
     <% } else { %>
         <h1>Login first!</h1>

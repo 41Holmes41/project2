@@ -11,8 +11,9 @@ var taskSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    completionTime: Date,
+    completedBy: String,
     description: String,
-    completion: Date,
     points: {
         type: Number,
         default: 1

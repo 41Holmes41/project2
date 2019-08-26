@@ -1,13 +1,32 @@
 <% include ../partials/header.ejs %>
-
-<h5>My Current Tasks</h5>
+<div class="">
+<h5 class="center teal-text text-lighten-1">My Current Tasks</h5>
 
 <div class="row">
     <%user.currentTasks.forEach(function(task){%>
         
     <% if (!task.available){%>
-
-    <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
+        <a class= "card-link" href="/tasks/show/<%=task._id%>"> 
+            <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
+              <div class="card teal lighten-1">
+                <div class="card-content white-text">
+                  <span class="card-title"><%=task.title%></span>
+                  <p>"<%=task.description%>"</p>
+                  <hr>
+                  <p>Due: <%=task.createdAt.getMonth()+1 %>/<%=task.createdAt.getDate()%>/<%=task.createdAt.getFullYear()%></p>
+                  <p>Points: <%=task.points%></p>
+                  <p>Creator: <%=task.creatorName%></p>
+                  <a href="/users/removetask/<%=task._id%>"
+                    class="btn halfway-fab right  waves-effect waves-light red lighten-1"><i
+                        class="material-icons">remove</i></a>
+                <a href="/users/completetask/<%=task._id%>"
+                    class="btn right waves-effect waves-light blue lighten-1"><i
+                        class="material-icons">check_box</i></a>
+                </div>
+              </div>
+            </div>
+    </a>
+<!--     <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
             <div class="card">
                 <div class="card-image">
                     <img src="../../images/clipboard.png">
@@ -30,36 +49,32 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     <% }%>
     <%});%>
 </div>
 
-<h5>My Completed Tasks</h5>
+<h5 class="center teal-text text-lighten-1">My Completed Tasks</h5>
 
 <div class="row">
         <%user.completedTasks.forEach(function(task){%>
             
     
-        <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="../../images/clipboard.png">
-                        <span class="card-title black-text">
-                            <p><%=task.title%></p>
-                        </span>
+            <a class= "card-link" href="/tasks/show/<%=task._id%>"> 
+                <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
+                  <div class="card teal lighten-1">
+                    <div class="card-content white-text">
+                      <span class="card-title"><%=task.title%></span>
+                      <p>"<%=task.description%>"</p>
+                      <hr>
+                      <p>Due: <%=task.createdAt.getMonth()+1 %>/<%=task.createdAt.getDate()%>/<%=task.createdAt.getFullYear()%></p>
+                      <p>Points: <%=task.points%></p>
+                      <p>Creator: <%=task.creatorName%></p>
                     </div>
-                    <div class="card-content">
-                        <p><%=task.description%></p>
-                        <p><%=task.completion%></p>
-                        <p><%=task.points%></p>
-                        <p><%=task.creatorName%></p>
-                        <p><%=task.assigned%></p>
-                    </div>
+                  </div>
                 </div>
-            </a>
-        </div>
+        </a>
         <%});%>
     </div>
-
+</div>
 <% include ../partials/footer.ejs %>

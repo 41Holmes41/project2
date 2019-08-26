@@ -1,56 +1,151 @@
 <% include ./partials/header.ejs %>
 
-<p><%= title %></p>
 
 
-<div class="row">
-        <div class="col s12">Available Tasks</div>
+
+<div class="">
+        <div class="col s12 ">
+                <h5 class="center teal-text text-lighten-1">Available Tasks</h5>
+        </div>
+
+        <div class="row">
+                <% tasks.forEach(function(task){ %>
+                <% if (task.available){ %>
+                <a class="card-link" href="/tasks/show/<%=task._id%>">
+                        <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
+                                <div class="card cyan lighten-4">
+                                        <div class="card-content teal lighten-1">
+                                                <span class="card-title"><%=task.title%></span>
+                                                <p>"<%=task.description%>"</p>
+                                                <hr>
+                                                <p>Due: <%=task.createdAt.getMonth()+1 %>/<%=task.createdAt.getDate()%>/<%=task.createdAt.getFullYear()%>
+                                                </p>
+                                                <p>Points: <%=task.points%></p>
+                                                <p>Creator: <%=task.creatorName%></p>
+                                                <a href="/users/assigntask/<%=task._id%>"
+                                                        class="btn halfway-fab right  waves-effect waves-light red lighten-1"><i
+                                                                class="material-icons">add</i></a>
+                                        </div>
+                                </div>
+                        </div>
+                </a>
+                <!--                         <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
+                                        <div class="card z-depth-3">
+                                                <div class="card-image">
+                                                        <img src="../images/clipboard.png">
+                                                        <span class="card-title black-text">
+                                                                <p><%=task.title%></p>
+                                                        </span>
+                                                        <a href="/users/assigntask/<%=task._id%>"
+                                                                class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                                                        class="material-icons">add</i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                        <p><%=task.description%></p>
+                                                        <p><%=task.completion%></p>
+                                                        <p><%=task.points%></p>
+                                                        <p><%=task.creator%></p>
+                                                        <p><%=task.assigned%></p>
+                                                </div>
+                                        </div>
+                                </a>
+                        </div>-->
+                <%}%>
+                        <% }); %>
+        </div>
+
 </div>
-<div class="row">
-        <div class="col s12">
-                <ul>
-                        <div class="row">
-                        <% tasks.forEach(function(task){ %>
-                                <% if (task.available){ %>
 
-                                <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
-                                                <div class="card">
-                                                        <div class="card-image">
-                                                                <img src="../images/clipboard.png">
-                                                                <span class="card-title black-text">
-                                                                        <p><%=task.title%></p>
-                                                                </span>
-                                                                <a href="/users/assigntask/<%=task._id%>"
-                                                                        class="btn-floating halfway-fab waves-effect waves-light red"><i
-                                                                                class="material-icons">add</i></a>
-                                                        </div>
-                                                        <div class="card-content">
-                                                                <p><%=task.description%></p>
-                                                                <p><%=task.completion%></p>
-                                                                <p><%=task.points%></p>
-                                                                <p><%=task.creator%></p>
-                                                                <p><%=task.assigned%></p>
-                                                        </div>
+<div class="">
+        <br>
+        <hr>
+        <div class="row">
+                <div class="col s6">
+                        <h5 class="center teal-text text-lighten-1">Leaderboards</h5>
+                </div>
+                <div class="col s6">
+                        <h5 class="center teal-text text-lighten-1">Recently Completed Tasks</h5>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col s6 ">
+                        <%sortedUsers.forEach(function(user){%>
+                        <div class="row">
+                                <div class="col s12 m6"">
+                                                  <div class=" card teal lighten-1">
+                                        <div class="card-content white-text">
+
+                                                <b><%=user.name%></b>
+                                                :
+                                                <b><%=user.points%></b>
+                                                <% if (user.points>1) { %>
+                                                points
+                                                <%} else { %>
+                                                point
+                                                <%}%>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                    </div>
+                        
+<!--                 <p>
+                        <%=user.name%>
+                                                :
+                                                <%=user.points%>
+                                                <% if (user.points>1) { %>
+                                                points
+                                                <%} else { %>
+                                                point
+                                                <%}%>
+                </p> -->
+                <%})%>
+                                        </div>
+                                        <div class="col s6">
+                                                <ul>
+                                                        <%sortedTasks.forEach(function(task){%>
+                                                        <li>
+                                                                <div class="row">
+                                                                        <a class="card-link"
+                                                                                href="/tasks/show/<%=task._id%>">
+                                                                                <div class="col s12 m6"
+                                                                                        href="/tasks/show/<%=task._id%>">
+                                                                                        <div
+                                                                                                class="card teal lighten-1">
+                                                                                                <div
+                                                                                                        class="card-content white-text">
+                                                                                                        <span
+                                                                                                                class="card-title"><%=task.title%></span>
+                                                                                                        <b> <%= task.completedBy %>
+                                                                                                        </b>
+                                                                                                        completed
+                                                                                                        <b><%=task.title%></b>
+                                                                                                        for
+                                                                                                        <b><%=task.points%></b>
+                                                                                                        <% if (task.points>1) { %>
+                                                                                                        points
+                                                                                                        <%} else { %>
+                                                                                                        point
+                                                                                                        <%}%>
+                                                    </div>
+                                                  </div>
                                                 </div>
                                         </a>
                                 </div>
-                                <%}%>
-                                <% }); %>
+<!--                                 <b> <%= task.completedBy %> </b>
+                                                                                                        completed
+                                                                                                        <b><%=task.title%></b>
+                                                                                                        for
+                                                                                                        <b><%=task.points%></b>
+                                                                                                        <% if (task.points>1) { %>
+                                                                                                        points
+                                                                                                        <%} else { %>
+                                                                                                        point
+                                                                                                        <%}%> -->
+                        </li>
+                        <%})%>
+                                                </ul>
+                                        </div>
+                                </div>
                         </div>
-                </ul>
-        </div>
-</div>
-<div class="row">
-        <div class="col s6">Leaderboards</div>
-        <div class="col s6">Recently Completed Tasks</div>
-</div>
-<div class="row">
-        <div class="col s6">
-                <%sortedUsers.forEach(function(user){%>
-                <p><%=user.name%> : <%=user.points%> points</p>
-                <%})%>
-        </div>
-        <div class="col s6">1</div>
-</div>
-
-<% include ./partials/footer.ejs %>
+                        <% include ./partials/footer.ejs %>
