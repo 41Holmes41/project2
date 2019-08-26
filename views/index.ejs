@@ -18,7 +18,7 @@
                                                 <span class="card-title"><%=task.title%></span>
                                                 <p>"<%=task.description%>"</p>
                                                 <hr>
-                                                <p>Due: <%=task.createdAt.getMonth()+1 %>/<%=task.createdAt.getDate()%>/<%=task.createdAt.getFullYear()%>
+                                                <p>Due: <%=task.completion.getMonth()+1 %>/<%=task.completion.getDate()%>/<%=task.completion.getFullYear()%>
                                                 </p>
                                                 <p>Points: <%=task.points%></p>
                                                 <p>Creator: <%=task.creatorName%></p>
@@ -69,10 +69,10 @@
         </div>
 
         <div class="row">
-                <div class="col s6 ">
+                <div class="col s6 m6 ">
                         <%sortedUsers.forEach(function(user){%>
                         <div class="row">
-                                <div class="col s12 m6"">
+                                <div class="">
                                                   <div class=" card teal lighten-1">
                                         <div class="card-content white-text">
 

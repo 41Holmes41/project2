@@ -13,7 +13,7 @@
                   <span class="card-title"><%=task.title%></span>
                   <p>"<%=task.description%>"</p>
                   <hr>
-                  <p>Due: <%=task.createdAt.getMonth()+1 %>/<%=task.createdAt.getDate()%>/<%=task.createdAt.getFullYear()%></p>
+                  <p>Due: <%=task.completion.getMonth()+1 %>/<%=task.completion.getDate()%>/<%=task.completion.getFullYear()%></p>
                   <p>Points: <%=task.points%></p>
                   <p>Creator: <%=task.creatorName%></p>
                   <a href="/users/removetask/<%=task._id%>"

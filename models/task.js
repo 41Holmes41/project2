@@ -7,6 +7,7 @@ var taskSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    completion: Date,
     completed: {
         type: Boolean,
         default: false
