@@ -1,0 +1,65 @@
+<% include ../partials/header.ejs %>
+
+<h5>My Current Tasks</h5>
+
+<div class="row">
+    <%user.currentTasks.forEach(function(task){%>
+        
+    <% if (!task.available){%>
+
+    <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
+            <div class="card">
+                <div class="card-image">
+                    <img src="../../images/clipboard.png">
+                    <span class="card-title black-text">
+                        <p><%=task.title%></p>
+                    </span>
+                    <a href="/users/removetask/<%=task._id%>"
+                        class="btn-floating halfway-fab waves-effect waves-light red"><i
+                            class="material-icons">remove</i></a>
+                    <a href="/users/completetask/<%=task._id%>"
+                        class="btn-floating waves-effect waves-light blue"><i
+                            class="material-icons">check_box</i></a>
+                </div>
+                <div class="card-content">
+                    <p><%=task.description%></p>
+                    <p><%=task.completion%></p>
+                    <p><%=task.points%></p>
+                    <p><%=task.creatorName%></p>
+                    <p><%=task.assigned%></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <% }%>
+    <%});%>
+</div>
+
+<h5>My Completed Tasks</h5>
+
+<div class="row">
+        <%user.completedTasks.forEach(function(task){%>
+            
+    
+        <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="../../images/clipboard.png">
+                        <span class="card-title black-text">
+                            <p><%=task.title%></p>
+                        </span>
+                    </div>
+                    <div class="card-content">
+                        <p><%=task.description%></p>
+                        <p><%=task.completion%></p>
+                        <p><%=task.points%></p>
+                        <p><%=task.creatorName%></p>
+                        <p><%=task.assigned%></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <%});%>
+    </div>
+
+<% include ../partials/footer.ejs %>

@@ -1,0 +1,56 @@
+<% include ./partials/header.ejs %>
+
+<p><%= title %></p>
+
+
+<div class="row">
+        <div class="col s12">Available Tasks</div>
+</div>
+<div class="row">
+        <div class="col s12">
+                <ul>
+                        <div class="row">
+                        <% tasks.forEach(function(task){ %>
+                                <% if (task.available){ %>
+
+                                <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
+                                                <div class="card">
+                                                        <div class="card-image">
+                                                                <img src="../images/clipboard.png">
+                                                                <span class="card-title black-text">
+                                                                        <p><%=task.title%></p>
+                                                                </span>
+                                                                <a href="/users/assigntask/<%=task._id%>"
+                                                                        class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                                                                class="material-icons">add</i></a>
+                                                        </div>
+                                                        <div class="card-content">
+                                                                <p><%=task.description%></p>
+                                                                <p><%=task.completion%></p>
+                                                                <p><%=task.points%></p>
+                                                                <p><%=task.creator%></p>
+                                                                <p><%=task.assigned%></p>
+                                                        </div>
+                                                </div>
+                                        </a>
+                                </div>
+                                <%}%>
+                                <% }); %>
+                        </div>
+                </ul>
+        </div>
+</div>
+<div class="row">
+        <div class="col s6">Leaderboards</div>
+        <div class="col s6">Recently Completed Tasks</div>
+</div>
+<div class="row">
+        <div class="col s6">
+                <%sortedUsers.forEach(function(user){%>
+                <p><%=user.name%> : <%=user.points%> points</p>
+                <%})%>
+        </div>
+        <div class="col s6">1</div>
+</div>
+
+<% include ./partials/footer.ejs %>
