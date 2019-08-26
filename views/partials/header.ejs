@@ -30,10 +30,10 @@
         <nav>
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="right ">
+                    <% if(user) { %>
                     <li><a href="/">Home</a></li>
                     <li><a href="/tasks/mytasks">My Tasks</a></li>
                     <li><a href="/tasks/new">Add Task</a></li>
-                    <% if(user) { %>
                     <li><a href="/users/show/<%=user._id%>">My Info</a></li>
                     <% }; %>
                 </ul>

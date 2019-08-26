@@ -1,7 +1,7 @@
 <% include ./partials/header.ejs %>
 
 
-
+<% if (user) { %>
 
 <div class="">
         <div class="col s12 ">
@@ -148,4 +148,13 @@
                                         </div>
                                 </div>
                         </div>
+
+                        <%} else { %>
+                        <h5 class="center teal-text text-lighten-1">Welcome to </h5>
+                        <h2 class="center teal-text text-lighten-1">Taskmaster 4000 </h2>
+                        <h5 class="center teal-text text-lighten-1">Please sign-in to begin!</h5>
+                        <div class="center">
+                         <a  class="center waves-effect waves-light btn-large" href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                        </div>
+                        <%}%>
                         <% include ./partials/footer.ejs %>
