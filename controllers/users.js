@@ -58,6 +58,7 @@ function completeTask(req, res) {
             req.user.completedTasks.push(task.id);
             
             req.user.points+=task.points;
+            req.user.totalPoints+=task.points;
             req.user.save();
             
 

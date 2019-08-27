@@ -5,6 +5,7 @@ var indexCtlr = require('../controllers/index');
 
 /* GET home page. */
 router.get('/', indexCtlr.index);
+router.get('/dashboard', indexCtlr.dashboard);
 
 router.get('/auth/google', passport.authenticate(
   'google',
