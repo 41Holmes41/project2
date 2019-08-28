@@ -3,9 +3,19 @@ const User = require('../models/user');
 
 module.exports = {
   index,
+  dashboard
 };
 
 function index(req, res, next) {
+  res.render('index', {
+    user: req.user,
+    name: req.query.name
+  })
+
+
+};
+
+function dashboard(req, res, next) {
 
   function sortUsers() {
     sortedUsers = User.find({}).sort('-points')
@@ -26,7 +36,7 @@ function index(req, res, next) {
 
       Task.find({}, function (err, tasks) {
 
-        res.render('index', {
+        res.render('dashboard', {
           title: 'Become a part of the solution.',
           user: req.user,
           name: req.query.name,

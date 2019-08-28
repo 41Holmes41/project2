@@ -9,6 +9,10 @@ var userSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    totalPoints: {
+        type: Number,
+        default: 1
+    },
     currentTasks: [{
         type: Schema.Types.ObjectId,
         ref: 'Task'
@@ -16,6 +20,10 @@ var userSchema = new mongoose.Schema({
     completedTasks: [{
         type: Schema.Types.ObjectId,
         ref: 'Task'
+    }],
+    groups: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Group'
     }]
 }, {
     timestamps: true

@@ -24,6 +24,8 @@ function create(req, res) {
 
         task.creatorName = req.user.name;
         task.creatorId = req.user._id;
+        req.user.points-=task.points;
+        req.user.save();
         task.save();
         res.redirect('/'); // this is an http request to the flights url
     })

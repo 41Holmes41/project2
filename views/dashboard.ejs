@@ -1,51 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+<% include ./partials/header.ejs %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>TaskMaster 4000</title>
-</head>
 
-<body>
-    <div>
-        <nav>
-            <div class="nav-wrapper">
-                <ul id="nav-mobile" class=" ">
-                    <li><a href="/" class="brand-logo left">TaskMaster 4000</a></li>
-                    <li class="right">
-                        <% if (user) { %>
-                        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                        <% } else { %>
-                        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-                        <% } %>
-                    </li>
-            </div>
-        </nav>
-        
 <% if (user) { %>
 
-<a href="/groups/new">Create a group</a>
+<div class="">
+        <div class="col s12 ">
+                <h5 class="center teal-text text-lighten-1">Available Task Pool</h5>
+        </div>
 
-<%} else { %>
-<h5 class="center teal-text text-lighten-1">Welcome to </h5>
-<h2 class="center teal-text text-lighten-1">Taskmaster 4000 </h2>
-<h5 class="center teal-text text-lighten-1">Please sign-in to begin!</h5>
-<div class="center">
-        <a class="center waves-effect waves-light btn-large" href="/auth/google"><i
-                        class="material-icons left">vpn_key</i>Login with Google</a>
+        <div class="row">
+                <% tasks.forEach(function(task){ %>
+                <% if (task.available){ %>
+                <a class="card-link" href="/tasks/show/<%=task._id%>">
+                        <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
+                                <div class="card cyan lighten-4">
+                                        <div class="card-content teal lighten-1">
+                                                <span class="card-title"><%=task.title%></span>
+                                                <p>"<%=task.description%>"</p>
+                                                <hr>
+                                                <p>Due: <%=task.completion.getMonth()+1 %>/<%=task.completion.getDate()%>/<%=task.completion.getFullYear()%>
+                                                </p>
+                                                <p>Points: <%=task.points%></p>
+                                                <p>Creator: <%=task.creatorName%></p>
+                                                <a href="/users/assigntask/<%=task._id%>"
+                                                        class="btn halfway-fab right  waves-effect waves-light red lighten-1"><i
+                                                                class="material-icons">add</i></a>
+                                        </div>
+                                </div>
+                        </div>
+                </a>
+                <!--                         <div class="col s6 m6"> <a href="/tasks/show/<%=task._id%>">
+                                        <div class="card z-depth-3">
+                                                <div class="card-image">
+                                                        <img src="../images/clipboard.png">
+                                                        <span class="card-title black-text">
+                                                                <p><%=task.title%></p>
+                                                        </span>
+                                                        <a href="/users/assigntask/<%=task._id%>"
+                                                                class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                                                        class="material-icons">add</i></a>
+                                                </div>
+                                                <div class="card-content">
+                                                        <p><%=task.description%></p>
+                                                        <p><%=task.completion%></p>
+                                                        <p><%=task.points%></p>
+                                                        <p><%=task.creator%></p>
+                                                        <p><%=task.assigned%></p>
+                                                </div>
+                                        </div>
+                                </a>
+                        </div>-->
+                <%}%>
+                        <% }); %>
+        </div>
+
 </div>
+
 <div class="">
         <br>
         <hr>
         <div class="row">
                 <div class="col s6">
-                        <h5 class="center teal-text text-lighten-1">Leaderboards</h5>
+                        <h5 class="center teal-text text-lighten-1">Leaderboard</h5>
                 </div>
                 <div class="col s6">
                         <h5 class="center teal-text text-lighten-1">Recently Completed Tasks</h5>
@@ -53,10 +69,11 @@
         </div>
 
         <div class="row">
-                <div class="col s6 m6 ">
+                <div class="col s6 ">
                         <%sortedUsers.forEach(function(user){%>
+                                <a href="/users/show/<%=user._id%>"%></a>
                         <div class="row">
-                                <div class="">
+                                <div class="col s12 m6"">
                                                   <div class=" card teal lighten-1">
                                         <div class="card-content white-text">
 
@@ -72,6 +89,7 @@
                                                   </div>
                                                 </div>
                                     </div>
+                                </a>
                         
 <!--                 <p>
                         <%=user.name%>
@@ -88,7 +106,7 @@
                                         <div class="col s6">
                                                 <ul>
                                                         <%sortedTasks.forEach(function(task){%>
-                                                                <%if (task.completed) {%>
+                                                                <% if (task.completed) { %>
                                                         <li>
                                                                 <div class="row">
                                                                         <a class="card-link"
@@ -144,4 +162,3 @@
                         </div>
                         <%}%>
                         <% include ./partials/footer.ejs %>
-

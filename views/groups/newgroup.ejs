@@ -27,17 +27,21 @@
                     </li>
             </div>
         </nav>
-        <nav>
-            <div class="nav-wrapper">
-                <ul id="nav-mobile" class="right ">
-                    <% if(user) { %>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/tasks/mytasks">My Tasks</a></li>
-                    <li><a href="/tasks/new">Add Task</a></li>
-                    <li><a href="/users/show/<%=user._id%>">My Info</a></li>
-                    <% }; %>
-                </ul>
-            </div>
-        </nav>
-    </div>
+
+
+<h1>Let's create a new group!</h1>
+
+<form action="/groups/create" method="POST" autocomplete="off">
+    <h5>Group name:</h5>
+    <input type="text" name="name">
+    <h5>Description:</h5>
+    <input type="text" name="description">
+    <h5>Password:</h5>
+    <input type="text" name="password">
+    <input class="white-text teal lighten-1"type="submit" value="Create New Group">
+</form>
+
+
+
+<% include ../partials/footer.ejs %>
+
