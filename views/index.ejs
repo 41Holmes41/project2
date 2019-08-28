@@ -40,5 +40,108 @@
         <a class="center waves-effect waves-light btn-large" href="/auth/google"><i
                         class="material-icons left">vpn_key</i>Login with Google</a>
 </div>
-<%}%>
-<% include ./partials/footer.ejs %>
+<div class="">
+        <br>
+        <hr>
+        <div class="row">
+                <div class="col s6">
+                        <h5 class="center teal-text text-lighten-1">Leaderboards</h5>
+                </div>
+                <div class="col s6">
+                        <h5 class="center teal-text text-lighten-1">Recently Completed Tasks</h5>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col s6 m6 ">
+                        <%sortedUsers.forEach(function(user){%>
+                        <div class="row">
+                                <div class="">
+                                                  <div class=" card teal lighten-1">
+                                        <div class="card-content white-text">
+
+                                                <b><%=user.name%></b>
+                                                :
+                                                <b><%=user.points%></b>
+                                                <% if (user.points>1) { %>
+                                                points
+                                                <%} else { %>
+                                                point
+                                                <%}%>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                    </div>
+                        
+<!--                 <p>
+                        <%=user.name%>
+                                                :
+                                                <%=user.points%>
+                                                <% if (user.points>1) { %>
+                                                points
+                                                <%} else { %>
+                                                point
+                                                <%}%>
+                </p> -->
+                <%})%>
+                                        </div>
+                                        <div class="col s6">
+                                                <ul>
+                                                        <%sortedTasks.forEach(function(task){%>
+                                                                <%if (task.completed) {%>
+                                                        <li>
+                                                                <div class="row">
+                                                                        <a class="card-link"
+                                                                                href="/tasks/show/<%=task._id%>">
+                                                                                <div class="col s12 m6"
+                                                                                        href="/tasks/show/<%=task._id%>">
+                                                                                        <div
+                                                                                                class="card teal lighten-1">
+                                                                                                <div
+                                                                                                        class="card-content white-text">
+                                                                                                        <span
+                                                                                                                class="card-title"><%=task.title%></span>
+                                                                                                        <b> <%= task.completedBy %>
+                                                                                                        </b>
+                                                                                                        completed
+                                                                                                        <b><%=task.title%></b>
+                                                                                                        for
+                                                                                                        <b><%=task.points%></b>
+                                                                                                        <% if (task.points>1) { %>
+                                                                                                        points
+                                                                                                        <%} else { %>
+                                                                                                        point
+                                                                                                        <%}%>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                        </a>
+                                </div>
+<!--                                 <b> <%= task.completedBy %> </b>
+                                                                                                        completed
+                                                                                                        <b><%=task.title%></b>
+                                                                                                        for
+                                                                                                        <b><%=task.points%></b>
+                                                                                                        <% if (task.points>1) { %>
+                                                                                                        points
+                                                                                                        <%} else { %>
+                                                                                                        point
+                                                                                                        <%}%> -->
+                        </li>
+                        <%}%>
+                        <%})%>
+                                                </ul>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <%} else { %>
+                        <h5 class="center teal-text text-lighten-1">Welcome to </h5>
+                        <h2 class="center teal-text text-lighten-1">Taskmaster 4000 </h2>
+                        <h5 class="center teal-text text-lighten-1">Please sign-in to begin!</h5>
+                        <div class="center">
+                         <a  class="center waves-effect waves-light btn-large" href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                        </div>
+                        <%}%>
+                        <% include ./partials/footer.ejs %>
+
