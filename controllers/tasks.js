@@ -5,7 +5,9 @@ module.exports = {
     new: newTask,
     create,
     show,
-    mytasks
+    mytasks,
+    update,
+    edit
 };
 
 function newTask(req, res) {
@@ -53,6 +55,24 @@ function mytasks(req, res) {
     })
 }
 
+function update(req, res) {
+    console.log('req.params.id:',req.params.id);
+    Task.findOneAndUpdate(req.params.id, req.body, function (err, task){
+        console.log('task.id',task.id);
+        res.redirect('/');
+    })
+
+}
+
+function edit (req,res) {
+    Task.findById(req.params.id, function (err, task) {
+        res.render('tasks/edit', {
+            task,
+            user: req.user,
+            name: req.query.name
+        })
+    })
+}
 
 
 

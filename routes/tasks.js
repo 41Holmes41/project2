@@ -7,6 +7,8 @@ router.get('/show/:id', tasksCtlr.show);
 router.get('/new', tasksCtlr.new);
 router.post('/new', tasksCtlr.create);
 router.get('/mytasks', tasksCtlr.mytasks);
+router.put('/update/:id', tasksCtlr.update);
+router.get('/edit/:id', tasksCtlr.edit);
 
 
 

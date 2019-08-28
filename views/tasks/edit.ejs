@@ -1,0 +1,11 @@
+<% include ../partials/header.ejs %>
+<form action="/tasks/update/<%=task.id%>?_method=PUT" method="POST" autocomplete="off">
+  <h6 class="teal-text text-lighten-1">Rename your task:</h6>
+  <input type="text" name="title">
+  <h6 class="teal-text text-lighten-1">Redescribe your task:</h6>
+  <input type="text" name="description">
+  <h6 class="teal-text text-lighten-1">New completion date:</h6>
+  <input class="teal-text text-lighten-1" type="datetime-local" name="completion" value="2019-01-01T12:00">
+  <input class="white-text teal lighten-1"type="submit" value="Edit Your Task">
+</form>
+<% include ../partials/footer.ejs %>
