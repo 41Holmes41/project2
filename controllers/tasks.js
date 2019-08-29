@@ -33,6 +33,7 @@ function create(req, res) {
 
 function show(req, res) {
     Task.findById(req.params.id, function (err, task) {
+        console.log("user infor? :", req);
         res.render('tasks/show', {
             task,
             user: req.user,
@@ -56,9 +57,9 @@ function mytasks(req, res) {
 }
 
 function update(req, res) {
-    console.log('req.params.id:',req.params.id);
+    
     Task.findOneAndUpdate(req.params.id, req.body, function (err, task){
-        console.log('task.id',task.id);
+        
         res.redirect('/');
     })
 
