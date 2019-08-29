@@ -14,6 +14,7 @@ var taskSchema = new mongoose.Schema({
     },
     completionTime: Date,
     completedBy: String,
+    completedByAvatar: String,
     description: String,
     points: {
         type: Number,
@@ -24,6 +25,7 @@ var taskSchema = new mongoose.Schema({
         ref: 'User'
     },
     creatorName: String,
+    creatorAvatar: String,
     assigned: {
         type: Schema.Types.ObjectId,
         ref: 'User'

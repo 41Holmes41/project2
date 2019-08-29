@@ -11,6 +11,7 @@ module.exports = {
 };
 
 function newTask(req, res) {
+
     res.render('tasks/newtask', {
         user: req.user,
         name: req.query.name
@@ -26,6 +27,7 @@ function create(req, res) {
 
         task.creatorName = req.user.name;
         task.creatorId = req.user._id;
+        task.creatorAvatar = req.user.avatar;
         task.save();
         res.redirect('/'); // this is an http request to the flights url
     })
@@ -33,7 +35,6 @@ function create(req, res) {
 
 function show(req, res) {
     Task.findById(req.params.id, function (err, task) {
-        console.log("user infor? :", req);
         res.render('tasks/show', {
             task,
             user: req.user,

@@ -52,6 +52,7 @@ function completeTask(req, res) {
     Task.findById(req.params.id, function(err, task){
         task.completed = true;
         task.completionTime = new Date();
+        task.completedByAvatar = req.user.avatar;
         task.completedBy = req.user.name;
         if (req.user.currentTasks) {
             req.user.currentTasks.remove(task.id);

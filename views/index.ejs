@@ -21,10 +21,10 @@
                                                 <p>Due: <%=task.completion.getMonth()+1 %>/<%=task.completion.getDate()%>/<%=task.completion.getFullYear()%>
                                                 </p>
                                                 <p>Points: <%=task.points%></p>
-                                                <p>Creator: <%=task.creatorName%></p>
+                                                <p>Creator: <img class="profile" src="<%=task.creatorAvatar%>" alt=""> <%=task.creatorName%></p>
                                                 <a href="/users/assigntask/<%=task._id%>"
                                                         class="btn halfway-fab right  waves-effect waves-light red lighten-1"><i
-                                                                class="material-icons">add</i></a>
+                                                                class="material-icons">add</i>Claim Task</a>
                                         </div>
                                 </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <div class="">
                                                   <div class=" card teal lighten-1">
                                         <div class="card-content white-text">
-
+                                                <img class = "profile" src="<%=user.avatar%>" alt="">       
                                                 <b><%=user.name%></b>
                                                 :
                                                 <b><%=user.points%></b>
@@ -117,10 +117,11 @@
                                                                                                         class="card-content white-text">
                                                                                                         <span
                                                                                                                 class="card-title"><%=task.title%></span>
+                                                                                                                <img class = "profile" src="<%=task.completedByAvatar%>" alt="">
                                                                                                         <b> <%= task.completedBy %>
                                                                                                         </b>
                                                                                                         completed
-                                                                                                        <b><%=task.title%></b>
+                                                                                                        <b>"<%=task.title%>"</b>
                                                                                                         for
                                                                                                         <b><%=task.points%></b>
                                                                                                         <% if (task.points>1) { %>
