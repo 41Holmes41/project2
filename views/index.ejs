@@ -54,6 +54,7 @@
                         <%sortedUsers.forEach(function(user){%>
                         <div class="row">
                                 <div class="">
+                                        <a href="users/show/<%=user.id%>">
                                         <div class=" card teal accent-4">
                                                 <div class="card-content white-text">
                                                         <img class="profile" src="<%=user.avatar%>" alt="">
@@ -67,6 +68,7 @@
                                                         <%}%>
                                                     </div>
                                                   </div>
+                                                </a>
                                                 </div>
                                     </div>
                         
