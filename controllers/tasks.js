@@ -58,9 +58,9 @@ function mytasks(req, res) {
 }
 
 function update(req, res) {
-    
-    Task.findOneAndUpdate(req.params.id, req.body, function (err, task){
-        
+    console.log(req.body);
+    Task.findOneAndUpdate({_id: req.params.id}, req.body, function (err, task){
+        console.log(task);
         res.redirect('/');
     })
 
