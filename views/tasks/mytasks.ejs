@@ -8,7 +8,7 @@
     <% if (!task.available){%>
         <a class= "card-link" href="/tasks/show/<%=task._id%>"> 
             <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
-              <div class="card teal accent-4">
+              <div class="z-depth-3 card blue accent-2">
                 <div class="card-content white-text">
                   <span class="card-title"><%=task.title%></span>
                   <p>"<%=task.description%>"</p>
@@ -38,7 +38,7 @@
     
             <a class= "card-link" href="/tasks/show/<%=task._id%>"> 
                 <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
-                  <div class="card teal accent-4">
+                  <div class="z-depth-3 card light-blue accent-4">
                     <div class="card-content white-text">
                       <span class="card-title"><%=task.title%></span>
                       <p>"<%=task.description%>"</p>

@@ -13,15 +13,15 @@
                 <% if (task.available){ %>
                 <a class="card-link" href="/tasks/show/<%=task._id%>">
                         <div class="col s6 m6" href="/tasks/show/<%=task._id%>">
-                                <div class="card cyan lighten-4">
-                                        <div class="card-content teal accent-4">
+                                <div class="z-depth-3 card cyan lighten-4 hoverable">
+                                        <div class="card-content blue accent-2">
                                                 <span class="card-title"><%=task.title%></span>
                                                 <p>"<%=task.description%>"</p>
                                                 <hr>
                                                 <p>Due: <%=task.completion.getMonth()+1 %>/<%=task.completion.getDate()%>/<%=task.completion.getFullYear()%>
                                                 </p>
                                                 <p>Points: <%=task.points%></p>
-                                                <p>Creator: <img class="profile" src="<%=task.creatorAvatar%>" alt="">
+                                                <p>Creator: <img class="z-depth-3 profile responsive-img circle" src="<%=task.creatorAvatar%>" alt="">
                                                         <%=task.creatorName%></p>
                                                 <a href="/users/assigntask/<%=task._id%>"
                                                         class="btn halfway-fab right  waves-effect waves-light red lighten-1"><i
@@ -55,9 +55,9 @@
                         <div class="row">
                                 <div class="">
                                         <a href="users/show/<%=user.id%>">
-                                        <div class=" card teal accent-4">
+                                        <div class=" card light-blue accent-5 z-depth-3">
                                                 <div class="card-content white-text">
-                                                        <img class="profile" src="<%=user.avatar%>" alt="">
+                                                        <img class="z-depth-3 profile responsive-img circle" src="<%=user.avatar%>" alt="">
                                                         <b><%=user.name%></b>
                                                         :
                                                         <b><%=user.points%></b>
@@ -85,12 +85,12 @@
                                                                                         <div class="col s12 m6"
                                                                                                 href="/tasks/show/<%=task._id%>">
                                                                                                 <div
-                                                                                                        class="card teal accent-4">
+                                                                                                        class="z-depth-3 card cyan accent-4">
                                                                                                         <div
                                                                                                                 class="card-content white-text">
                                                                                                                 <span
                                                                                                                         class="card-title"><%=task.title%></span>
-                                                                                                                <img class="profile"
+                                                                                                                <img class="z-depth-3 profile responsive-img circle"
                                                                                                                         src="<%=task.completedByAvatar%>"
                                                                                                                         alt="">
                                                                                                                 <b> <%= task.completedBy %>
