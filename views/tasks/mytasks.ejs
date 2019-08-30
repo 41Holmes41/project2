@@ -2,6 +2,9 @@
 <div class="">
 <h5 class="center teal-text text-lighten-1">My Current Tasks</h5>
 
+
+<% if (user.currentTasks[0]) { %>
+
 <div class="row">
     <%user.currentTasks.forEach(function(task){%>
         
@@ -30,7 +33,22 @@
     <%});%>
 </div>
 
-<h5 class="center teal-text text-lighten-1">My Completed Tasks</h5>
+<% } else { %>
+
+  <div class="col s6 m6" href="">
+    <div class="z-depth-3 card blue accent-2">
+      <div class="card-content white-text">
+        <span class="card-title center">You currently have no tasks!</span>
+        <p class = "center">Claim a task on the home screen! </p>
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+
+  
+  <h5 class="center teal-text text-lighten-1">My Completed Tasks</h5>
+  <% if (user.completedTasks[0]) { %>
 
 <div class="row">
         <%user.completedTasks.forEach(function(task){%>
@@ -52,5 +70,17 @@
         </a>
         <%});%>
     </div>
+    <% } else { %>
+
+      <div class="col s3 m3" href="">
+        <div class="z-depth-3 card blue accent-2">
+          <div class="card-content white-text">
+            <span class="card-title center">You have not completed any tasks!</span>
+            <p class = "center">Complete a task after you claim it </p>
+          </div>
+        </div>
+      </div>
+
+      <% } %>
 </div>
 <% include ../partials/footer.ejs %>
